@@ -14,7 +14,11 @@
                 {% if user == current_user %}
                 <p><a href="{{ url_for('main.edit_profile') }}">{{ _('Edit your profile') }}</a></p>
                 {% if not current_user.get_task_in_progress('export_posts') %}
-                <p><a href="{{ url_for('main.export_posts') }}">{{ _('Export your posts') }}</a></p>
+                <p>
+                    <a href="{{ url_for('main.export_posts') }}">
+                        {{ _('Export your posts') }}
+                    </a>
+                </p>
                 {% endif %}
                 {% elif not current_user.is_following(user) %}
                 <p>
@@ -31,12 +35,16 @@
                     </form>
                 </p>
                 {% endif %}
-                {% if user != current_user %}
-                <p><a href="{{ url_for('main.send_message', recipient=user.username) }}">{{ _('Send private message') }}</a></p>
-                {% endif %}
             </td>
         </tr>
     </table>
+    {% if user != current_user %}
+    <p>
+        <a href="{{ url_for('main.send_message', recipient=user.username) }}">
+            {{ _('Send private message') }}
+        </a>
+    </p>
+    {% endif %}
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}

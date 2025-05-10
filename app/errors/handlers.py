@@ -3,11 +3,8 @@ from app import db
 from app.errors import bp
 from app.api.errors import error_response as api_error_response
 
-
 def wants_json_response():
-    return request.accept_mimetypes['application/json'] >= \
-        request.accept_mimetypes['text/html']
-
+    return request.accept_mimetypes['application/json'] >= request.accept_mimetypes['text/html']
 
 @bp.app_errorhandler(404)
 def not_found_error(error):

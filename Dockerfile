@@ -1,4 +1,4 @@
-FROM python:slim
+FROM python:3.11-slim
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
@@ -13,4 +13,4 @@ ENV FLASK_APP microblog.py
 RUN flask translate compile
 
 EXPOSE 5000
-ENTRYPOINT ["./boot.sh"]
+ENTRYPOINT [ "./boot.sh" ]
