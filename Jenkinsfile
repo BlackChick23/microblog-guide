@@ -10,6 +10,8 @@ pipeline {
             image 'python:3.9' 
             args '-v /var/run/docker.sock:/var/run/docker.sock'
             args '-v /usr/bin/docker:/usr/bin/docker'
+            args '--privileged'
+            args '-u root'
         }
     }
     stages {
