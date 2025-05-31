@@ -5,8 +5,7 @@ pipeline {
     //     }
     // }
 
-    agent none
-
+    agent any
     stages {
         stage('build image') {
 
