@@ -10,6 +10,7 @@ pipeline {
         stage('build image') {
 
             steps {
+                sh 'docker ps -q --filter "name=microblog" | xargs -r docker stop'
                 echo 'Building microblog image..'
                 sh 'docker build -t microblog:latest .'
             }
