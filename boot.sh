@@ -1,5 +1,6 @@
 #!/bin/bash
 while true; do
+    flask db init
     flask db migrate
     flask db upgrade
     if [[ "$?" == "0" ]]; then
