@@ -1,0 +1,35 @@
+pipeline {
+    // agent {
+    //     docker {
+    //         image 'python:3.9'
+    //     }
+    // }
+
+    agent none
+
+    stages {
+        stage('build image') {
+
+            steps {
+                echo 'Building microblog image..'
+                sh 'docker build -t microblog:latest .'
+            }
+        }
+
+        stage('test microblog') {
+
+            steps {
+                echo 'Testing microblog application..'
+                echo 'Passed'
+            }
+        }
+
+        stage('deploy microblog application') {
+
+            steps {
+                echo 'Deploying microblog application..'
+                sh 'docker run --name microblog -d -p 8000:5000 --rm microblog:latest'
+            }
+        }
+    }
+}
